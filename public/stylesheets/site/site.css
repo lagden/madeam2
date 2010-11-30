@@ -1,0 +1,232 @@
+body{
+	background-color: #FFF;
+	color:#555;
+}
+
+body > div.wrapper{
+	width:900px;
+	margin:1em auto;
+	min-height:100px;
+}
+
+body > div.wrapper > section h1.titulo{
+	font-size:1.7em;
+	font-weight:bold;
+	text-transform:uppercase;
+	padding:.5em 0 1.1em 0;
+	line-height:normal;
+	color:#a2232a;
+/*	float:left;
+	display:block;
+	padding-right:210px;
+	background-image: url('assets/balls.png');
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: right bottom;	*/
+}
+
+body > div.wrapper > section.conteudo{
+	padding:1em 3.5em;
+	min-height:100px;
+	font-size:.9em;
+	line-height:1.4em;
+}
+
+body > div.wrapper > section.conteudo a,
+body > div.wrapper > section.conteudo a:link,
+body > div.wrapper > section.conteudo a:visited,
+body > div.wrapper > section.conteudo a:active{background:transparent;color:#ff8606;text-decoration:none}
+body > div.wrapper > section.conteudo a:hover{background:transparent;color:#ff8606;text-decoration:underline}
+
+body > div.wrapper > section.conteudo > p{
+	padding:0 0 10px 0;
+}
+
+body > div.wrapper > section.conteudo ul,
+body > div.wrapper > section.conteudo ol{
+	margin:10px 20px 20px 20px;
+}
+
+body > div.wrapper > section.conteudo ul ul,
+body > div.wrapper > section.conteudo ol ol{
+	margin:0 20px;
+}
+
+body > div.wrapper > section.conteudo ul li,
+body > div.wrapper > section.conteudo ol li{
+	margin:0 0 0 20px;
+}
+
+body > div.wrapper > section.conteudo ul{
+	list-style-type:square;
+}
+
+body > div.wrapper > section.conteudo ol{
+	list-style-type:decimal-leading-zero;
+}
+
+
+body > footer{
+	background-image: url('assets/bgFooter.gif');
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: center 0;
+	min-height:128px;
+	margin-top:2em;
+	color:#999;
+	font-size:.8em;
+}
+
+body > footer table{
+	margin:0 auto;
+	position:relative;
+	top:80px;
+	width:780px;
+	
+}
+
+/* Paginacao */
+/* div pagination */
+div.pagination{text-align:right;color:#000;background:none;font-size:1em;}
+div.pagination > span{}
+div.pagination button.paginacaoUI{color:#000;background:none;border:0;padding:.5em .7em;cursor:pointer;margin:0 .1em;}
+div.pagination button.next,
+div.pagination button.prior{color:#F70;font-weight:bold;}
+div.pagination button.paginacaoUI:hover{background-color:#F70;color:#FFF;}
+
+div.pagination button.paginacaoDisabled{display:none}
+div.pagination button.paginacaoSelecionado{background-color:#F70;color:#FFF;}
+
+div#accordion h3{
+	color:#f70;
+	padding:10px;
+	font-size:1.5em;
+	margin-top:20px;
+	cursor:pointer;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px; 
+}
+
+div#accordion h3.ativo{
+	/*color:#FFF;*/
+	background-color:#ffdec3;
+}
+
+div#accordion div.element{
+	margin:10px 10px 0px 10px;
+}
+
+
+
+
+
+
+/* Onde */
+.onde h1{
+	font-size:1.7em;
+	text-transform:uppercase;
+	line-height:normal;
+	padding-bottom:1em;
+}
+
+.onde table{width:800px;}
+.onde div#mapCanvas{
+	width:500px;height:380px;
+	-webkit-box-shadow: 0px 0px 10px #aaa;
+	-moz-box-shadow: 0px 0px 10px #aaa;
+	box-shadow: 0px 0px 10px #aaa;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.onde input[type=text]{
+	-webkit-box-shadow: 0px 0px 10px #f70;
+	-moz-box-shadow: 0px 0px 10px #f70;
+	box-shadow: 0px 0px 10px #f70;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border:2px solid #f70;
+	font-size:1em;
+	color: #f70;
+	background-color:#FFF;
+	padding:.3em;
+}
+
+/*
+.onde div.gmapInfo{
+	width:500px;
+	background:red;
+	font-size:1em;
+}
+//*/
+
+.onde ul#listaLojas{width:277px;margin:20px 0 0 0;padding:0;}
+.onde ul#listaLojas > li{
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	background-image: url('assets/pinPatinha.png');
+	display:block;
+	min-height:60px;
+	padding-left:50px;
+	margin:0 0 10px 0;
+	cursor:pointer;
+}
+
+.onde ul#listaLojas > li > h1{font-size:1em;color:#F70;margin:0;padding:0 0 5px 0;}
+.onde ul#listaLojas > li > p{font-size:.8em;color:#AAA;margin:0;padding:0;}
+
+.onde div#chkboxes > ul{margin:20px 0 0 0;padding:0;list-style:none;}
+.onde div#chkboxes > ul > li{font-size:.8em;color:#AAA;margin:0;padding:0;}
+
+.onde div.gmapInfo h1{font-size:1.5em;color:#F70;margin:0;padding:0;}
+.onde div.gmapInfo p{font-size:1em;color:#AAA;margin:0;padding:0;}
+
+.onde p.laranja{
+	color:#f70;
+	padding-bottom:.5em;
+}
+
+.onde p{
+	padding-bottom:.5em;
+}
+
+.onde label{
+	color:#f70;
+	font-weight:bold;
+}
+
+.onde input[type=text],select{
+	-webkit-box-shadow: 0px 0px 10px #f70;
+	-moz-box-shadow: 0px 0px 10px #f70;
+	box-shadow: 0px 0px 10px #f70;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border:2px solid #f70;
+	font-size:1em;
+	color: #f70;
+	background-color:#FFF;
+	padding:.3em;
+	width:170px;
+	margin:0 5px 0 0;
+}
+
+.onde button.geoCodeButton{
+	border:0;
+	margin:0;
+	font-size:1em;
+	padding:.3em;
+	text-indent: -1000em;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-image: url('assets/lupa.png');
+	width:19px;
+	position:relative;
+}
+
+.onde button.geoCodeButton:active{top:1px;}

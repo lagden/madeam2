@@ -1,0 +1,4 @@
+#!/usr/bin/env php
+<?php
+require 'application/vendor/Madeam/src/Madeam.php';
+new madeam\Console_Scaffold($_SERVER['argv']);

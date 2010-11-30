@@ -1,0 +1,43 @@
+body{
+	background-image: none;
+}
+
+div.authCenter{
+	position:absolute;
+	padding:5px;
+	width:350px;
+	font-size:.8em;
+}
+
+div.authCenter > div.form{
+	margin:0 auto 5px auto;
+	padding:20px;
+	width:310px;
+	background: #FFFFFF url('assets/images/formBg.png') left top repeat-x;
+	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
+	background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+div.authCenter > div.form label{
+	color:#AAA;
+	margin:15px 0 3px 0;
+}
+
+div.authCenter > div.form input[type=text],
+div.authCenter > div.form input[type=password]{
+	font-size:1.7em;
+	color:#999;
+}
+
+div.authCenter > div.form div.base{
+	margin:20px 0 0 0;
+	text-align:right;
+}
+
+div.voltaSite{background-color:#000;color:#FFF;opacity:.7;padding:.5em;}

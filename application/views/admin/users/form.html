@@ -1,0 +1,62 @@
+<section class="content">
+	<header>
+		<h1><?php echo $acao; ?></h1>
+	</header>
+	<hr/>
+	<?php if($erros): ?>
+	<pre class="erro">
+	<?php
+	foreach($erros as $msg)echo "{$msg}"."\n";
+	?>
+	</pre>
+	<?php endif; ?>
+	<div class="formulario">
+		<?php
+		echo \madeam\helper\Form::open($_uri,array('id'=>'frmAdmin','class'=>'frm')) . "\n";
+		echo \madeam\helper\Form::hidden('Item[id]', $item->id) . "\n";
+		// Path to redirect if upload files errors
+		echo \madeam\helper\Form::hidden('_pathUrl', $url) . "\n";
+	
+		foreach((array)$frm as $k=>$v)echo \madeam\helper\Form::hidden($k, $v) . "\n";
+	
+		echo '<p>';
+		echo \madeam\helper\Form::labelOpen('<span class="big">Nome</span>');
+		echo \madeam\helper\Form::text('Item[name]',$item->name,array("autofocus"=>true,"required"=>true,"placeholder"=>"Nome completo","class"=>"mid validate['required']"));
+		echo \madeam\helper\Form::labelClose();
+		echo '</p>'. "\n";
+	
+		echo '<p>';
+		echo \madeam\helper\Form::labelOpen('<span class="big">Email</span>');
+		echo \madeam\helper\Form::email('Item[email]',$item->email,array("required"=>true,"placeholder"=>"nome@dominio.com","class"=>"mid validate['required','email']"));
+		echo \madeam\helper\Form::labelClose();
+		echo '</p>'. "\n";
+	
+		echo '<p>';
+		echo \madeam\helper\Form::labelOpen('<span class="big">Login</span>');
+		echo \madeam\helper\Form::text('Item[login]', $item->login,array("required"=>true,'class'=>"validate['required']"));
+		echo \madeam\helper\Form::labelClose();
+		echo '</p>'. "\n";
+	
+		if($item->id){
+			echo '<p>';
+			echo \madeam\helper\Form::labelOpen('<span class="big">Senha</span>');
+			echo \madeam\helper\Form::password('Item[password]', null,array("id"=>'txtsenha',"disabled"=>true,'class'=>"validate['required']"));
+			echo \madeam\helper\Form::checkbox('alteraSenha', 1, null,array("id"=>'swapsenha'));
+			echo \madeam\helper\Form::labelClose();
+			echo '</p>'. "\n";
+		}else{
+			echo '<p>';
+			echo \madeam\helper\Form::labelOpen('<span class="big">Senha:</span>');
+			echo \madeam\helper\Form::password('Item[password]', null, array("id"=>'txtsenha',"required"=>true,'class'=>"validate['required']"));
+			echo \madeam\helper\Form::labelClose();
+			echo '</p>'. "\n";
+		}
+	
+		echo '<hr/>';
+	
+		echo \madeam\helper\Form::submit('Salva',array("class"=>"awesome")) . "\n";
+		echo \madeam\helper\Form::button('Voltar',array("id"=>"voltaBtn",'class'=>'awesome')) . "\n";
+		echo \madeam\helper\Form::close();
+		?>
+	</div>
+</section>

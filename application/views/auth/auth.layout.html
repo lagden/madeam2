@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<!--
+Site Name: Front Line
+Site URI: http://www.efeitofrontline.com.br/
+Version: 1.0
+Date: 2010 September 7
+Designer: Thiago Andrade - http://www.thiagoandrade.com/
+Programmer: Thiago Lagden - http://lagden.art.br/
+Agency: The Aubergine Panda
+-->
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="<?php echo "{$_keywords}"; ?>" />
+	<meta name="description" content="<?php echo "{$_description}"; ?>" />
+	<meta name="author" content="The Aubergine Panda" />
+	<meta name="robots" content="all" />
+	
+	<link rel="shortcut icon" href="<?php echo \madeam\Framework::url('/images/favicon.ico'); ?>" />
+
+	<!-- Title -->
+	<title><?php echo "{$_title}"; ?></title>
+
+	<!-- Css -->
+	<?php foreach((array)$_css as $v)echo "{$v}\n"; ?>
+	<!--[if lt IE 9]><?php echo \madeam\helper\Html::css('/stylesheets/ie'); ?><![endif]-->
+
+	<!-- Js -->
+	<?php foreach((array)$_js as $v)echo "{$v}\n"; ?>
+	<!--[if lt IE 9]><?php echo \madeam\helper\Html::js('/javascripts/app/html5'); ?><![endif]-->
+
+	<!-- javaScript -->
+	<script type="text/javascript">
+		<?php echo "{$_javaScriptApp}"; ?>
+		<?php echo "{$_javaScript}"; ?>
+	</script>
+</head>
+
+<body>
+	<?php echo "{$_content}"; ?>
+</body>
+</html>

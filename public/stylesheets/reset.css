@@ -1,0 +1,45 @@
+/* Reset
+-----------------------------------------------------------------------------*/
+/*h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+table{border-collapse:collapse; border-spacing:0;}*/
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,var{font-style:normal;font-weight:normal;}
+ol,ul{list-style:none;}
+abbr,acronym{border:0;}
+ul,ol{list-style:none}
+dl,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,div,p,blockquote,fieldset,legend,input,select,textarea{margin:0;padding:0}
+a img,:link img,:visited img,abbr,acronym,fieldset,iframe{border:0;}
+object,object:link,object:visited,object:hover,object:active{border:0;outline:none;margin:0;padding:0;display:block;}
+:link,:visited,:focus{text-decoration:none;outline:none;}
+del{text-decoration: line-through;}
+abbr[title], dfn[title] {border-bottom:1px dotted #000;cursor:help;}
+input,select{vertical-align:middle;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,
+q:before, q:after{content:'';content:none;}
+a{margin:0;padding:0;border:0;vertical-align:baseline;background:transparent;}
+ins{background-color:#ff9;color:#000;text-decoration:none;}
+
+img,a{
+	-webkit-user-drag:none;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+}
+
+/* Reset HTML 5
+-----------------------------------------------------------------------------*/
+article,aside,canvas,details,figcaption,figure, 
+footer,header,hgroup,menu,nav,section,summary,
+time,mark,audio,video{
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary{display:block;}
+nav ul{list-style:none;}
+mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold;}

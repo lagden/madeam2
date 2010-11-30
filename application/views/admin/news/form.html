@@ -1,0 +1,84 @@
+<section class="content">
+	<header>
+		<h1><?php echo $acao; ?></h1>
+	</header>
+	<?php if($erros): ?>
+		<pre class="erro"><?php foreach($erros as $msg)echo "{$msg}"."\n"; ?></pre>
+	<?php endif; ?>
+	
+	<?php
+	echo \madeam\helper\Form::open($_uri,array('id'=>'frmAdmin','class'=>'frm','file'=>true)) . "\n";
+	echo \madeam\helper\Form::hidden('Item[id]', $item->id) . "\n";
+	echo \madeam\helper\Form::hidden('_pathUrl', $url) . "\n";
+	
+	foreach((array)$frm as $k=>$v)echo \madeam\helper\Form::hidden($k, $v) . "\n";
+	
+	echo '<p>';
+	echo \madeam\helper\Form::labelOpen('<span class="big">Data</span>');
+	echo \madeam\helper\Form::text('Item[data_noticia]',is_object($item->data_noticia)?date_format($item->data_noticia,'Y-m-d'):null,array("placeholder"=>"ex.: YYYY-mm-dd","required"=>true,"class"=>"mid validate['required']"));
+	echo \madeam\helper\Form::labelClose();
+	echo " <span>ex.: AAAA-mm-dd </span>";
+	echo '</p>'. "\n";
+	
+	echo '<p>';
+	echo \madeam\helper\Form::labelOpen('<span class="big">Titulo</span>');
+	echo \madeam\helper\Form::text('Item[titulo]',$item->titulo,array("id"=>"_slugTitle","autofocus"=>true,"required"=>true,"placeholder"=>"Coloque o título","class"=>"big validate['required']"));
+	echo \madeam\helper\Form::labelClose();
+	echo '</p>'. "\n";
+
+	echo '<p>';
+	echo \madeam\helper\Form::labelOpen('<span class="big">Slug</span>');
+	echo \madeam\helper\Form::text('Item[slug]',$item->slug,array("id"=>"_slugAlias","required"=>true,"class"=>"big validate['required']"));
+	echo \madeam\helper\Form::labelClose();
+	echo '</p>'. "\n";
+	
+	echo '<p>';
+	echo \madeam\helper\Form::labelOpen('<span class="big">Olho</span>');
+	echo \madeam\helper\Form::textarea('Item[olho]',$item->olho,array("class"=>"big"));
+	echo \madeam\helper\Form::labelClose();
+	echo '</p>'. "\n";
+	
+	echo '<p class="_paddingBoth">';
+	echo \madeam\helper\Form::textarea('Item[texto]',($item->texto)?$item->texto:' ',array("required"=>true,"class"=>"big ckEditor __MooEditable"));
+	echo '</p>'. "\n";
+	
+	echo '<pre class="warning">Atenção: Tamanho máximo da imagem é de 2 megas e a dimensão de 500x500 px. (apenas arquivos jpg, gif e png)</pre>';
+	
+	echo '<p>';
+	echo \madeam\helper\Form::labelOpen('<span class="big">Imagem</span>');
+	echo \madeam\helper\Form::file('Files[]',array("class"=>""));
+	echo \madeam\helper\Form::labelClose();
+	echo '</p>'. "\n";
+	
+	if($item->id){
+		$targetDir=\madeam\Framework::$pathToProject . 'public' . DS . 'files' . DS . 'noticias' . DS;
+		$itemDir=$targetDir. $item->id .DS;
+		if(is_dir($itemDir)){
+			echo '<ul>';
+			if($handle=opendir($itemDir)){
+			    while(false!==($file=readdir($handle))){
+					if(file_exists($itemDir.$file)){
+						if($file!="."&&$file!=".."){
+							echo '<li>';
+							echo \madeam\helper\Html::img("/files/noticias/{$item->id}/{$file}");
+							echo '</li>'. "\n";
+						}
+					}
+			    }
+			    closedir($handle);
+			}
+			echo '</ul>';
+		}
+	}
+	
+	echo '<hr/>';
+	
+	echo $comments;
+	
+	echo '<hr/>';
+	
+	echo \madeam\helper\Form::submit('Salva',array("class"=>"awesome")) . "\n";
+	echo \madeam\helper\Form::button('Voltar',array("id"=>"voltaBtn",'class'=>'awesome')) . "\n";
+	echo \madeam\helper\Form::close();
+	?>
+</section>

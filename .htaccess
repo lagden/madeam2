@@ -1,0 +1,11 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+#To use sub directories uncomment this line and replace "sub" with the name of your directory
+#RewriteRule sub$ /sub/ [QSA,L]
+
+RewriteRule ^$ public/dispatcher.php?_uri=$1 [QSA,L]
+RewriteRule (.*) public/dispatcher.php?_uri=$1 [QSA,L]

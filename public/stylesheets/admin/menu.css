@@ -1,0 +1,97 @@
+.menu{
+	background:#EEE;
+	background:-webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0, rgb(238,238,238)),
+	    color-stop(0.4, rgb(255,255,255)),
+	    color-stop(1, rgb(255,255,255))
+	);
+	background:-moz-linear-gradient(
+	    center bottom,
+	    rgb(238,238,238) 0%,
+	    rgb(255,255,255) 40%,
+	    rgb(255,255,255) 100%
+	);
+	/*border-bottom:thin #E5E5E5 solid;*/
+}
+
+.menu > ul{
+	width:900px;
+	list-style:none;
+	margin:0 auto;
+	padding:0;
+	clear:both;
+	text-transform:uppercase;
+	display:block;
+	position: relative;
+	z-index: 597;
+}
+
+.menu > ul > li{
+	display:inline-block;
+	margin:0;
+	padding:0;
+}
+
+.menu > ul > li > a{
+	font-size:.9em;
+	background:transparent;
+	display:block;
+	font-weight:bold;
+	line-height:1.5em;
+	margin:0;
+	padding:10px 15px;
+	text-align:left;
+	text-decoration:none;
+	position: relative;
+}
+
+.menu ul > li:hover > a,
+.menu ul > li > a:hover{
+	opacity:.8;
+	text-decoration:none;
+	background:#000;
+	color:#FFF;
+	position: relative;
+}
+
+.menu > ul > li > ul{
+	visibility: hidden;
+	position: absolute;
+	width:100%;
+	top: 100%;
+	left:0;
+	z-index: 598;
+	padding:0;
+	margin:0;
+	border:0;
+	opacity:.8;
+}
+
+.menu > ul > li:first-child > ul{
+	margin:0;
+}
+
+.menu > ul > li:hover > ul{
+	visibility: visible;
+}
+
+.menu > ul > li > ul > li > a{
+	font-size:.65em;
+	background:#ff7700;
+	color:#FFF;
+	display:block;
+	margin:0;
+	border:0;
+	padding:8px 10px;
+	font-style:normal;
+	text-align:left;
+}
+
+.menu > ul > li > ul > li > a:hover{
+	text-decoration:none;
+	color:#FFF;
+	background-color:#AAA;
+}

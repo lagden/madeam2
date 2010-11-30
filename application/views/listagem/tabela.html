@@ -1,0 +1,73 @@
+<table class="listagem">
+	<thead>
+		<tr>
+			<?php foreach ($cols as $colK=>$colV) : ?>
+			<th><?php echo "{$colV}"; ?></th>
+			<?php endforeach; ?>
+		</tr>
+	</thead>
+	<tbody>
+		<?php
+		if($result):
+		foreach ($result as $row) :
+		?>
+		<tr title="Registro <?php echo "n&#186; {$row->id}"; ?>" reg="<?php echo $row->id; ?>">
+			<?php foreach ($cols as $colK=>$colV) : ?>
+			<td><?php
+			$colKe=explode('->',$colK);
+			if(count($colKe)>1)$colK=$colKe[0];
+			if($colK=="id"){
+				echo '<div class="center">';
+				echo \madeam\helper\Html::img('/images/ico/ico_remove.gif', array('class'=>"deletar",'title'=>"Deletar n&#186; {$row->id}",'reg'=>$row->id));
+				echo \madeam\helper\Html::img('/images/ico/ico_edit.gif', array('class'=>"editar",'title'=>"Editar n&#186; {$row->id}",'reg'=>$row->id));
+				echo '</div>';
+			}elseif(is_object($row->$colK)){
+				if(preg_match('/DateTime/i',get_class($row->$colK))){
+					echo date_format($row->$colK,'d/m/Y');
+				}else{
+					if(count($colKe)>1){
+						$colShow=$row;
+						foreach($colKe as $v)$colShow=$colShow->$v;
+						echo sl($colShow);
+					}
+					else echo sl("{$row->$colK}");
+				}
+			}elseif(is_array($row->$colK)){
+				$itens=array();
+				foreach($row->$colK as $v){
+					if(count($colKe)>1){
+						$colShow=$v;
+						$ccArr=0;
+						foreach($colKe as $item){
+							if($ccArr)$colShow=$colShow->$item;
+							$ccArr++;
+						}
+						$itens[]=sl($colShow);
+					}else echo '';
+				}
+				echo join(', ',$itens);
+			}else{
+				echo sl("{$row->$colK}");
+			}
+			?></td>	
+			<?php endforeach; ?>
+		</tr>
+		<?php
+		endforeach;
+		else:
+		?>
+		<tr>
+			<td class="center" colspan="<?php echo count($cols); ?>">Nenhum resgitro encontrado</td>	
+		</tr>
+		<?php
+		endif;
+		?>
+	</tbody>
+	<?php if($tfoot):?>
+	<tfoot>
+		<tr>
+			<td colspan="<?php echo count($cols) ?>"><?php echo $tfoot; ?></td>
+		</tr>
+	</tfoot>
+	<?php endif; ?>
+</table>

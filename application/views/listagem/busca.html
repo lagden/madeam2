@@ -1,0 +1,9 @@
+<section class="busca">
+	<?php
+	echo \madeam\helper\Form::open($url.'/busca/',array('id'=>'frmBuscaLista','class'=>'frm'));
+	echo \madeam\helper\Form::text('Busca[palavra]',$busca,array('id'=>'palavraBusca'));
+	echo \madeam\helper\Form::submit('Pesquisar',array('class'=>'awesome'));
+	echo \madeam\helper\Form::button('Limpar',array('id'=>'limpaBusca','class'=>'awesome'));
+	echo \madeam\helper\Form::close();
+	?>
+</section>

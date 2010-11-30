@@ -1,0 +1,13 @@
+<section class="content">
+<?php if(isset($acao)): ?>
+	<header>
+		<h1><?php echo $acao; ?></h1>
+	</header>
+<?php endif; ?>
+<?php echo \madeam\View::render(array('template'=>'listagem/busca.html','data'=>array('busca'=>$busca,'url'=>$url))); ?>
+<div class="add"><?php echo $add; ?></div>
+<?php echo \madeam\View::render(array('template' => 'listagem/tabela.html','data'=>array('cols'=>$cols,'result'=>$result))); ?>
+	<footer>
+		<nav><?php echo $paginacao; ?></nav>
+	</footer>
+</section>

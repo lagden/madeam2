@@ -1,0 +1,40 @@
+<div class="voltaSite"><?php echo $volta; ?></div>
+<div id="loginFrm" class="authCenter">
+	<div class="form">
+	<?php
+	echo \madeam\helper\Form::open('auth/',array('id'=>'formLogin','class'=>'frm')) . "\n";
+
+	foreach((array)$frm as $k=>$v)echo \madeam\helper\Form::hidden($k, $v) . "\n";
+
+	echo \madeam\helper\Form::label('Login',array("class"=>"block")) . "\n";
+	echo \madeam\helper\Form::text('Item[login]', null,array("autofocus"=>true,"class"=>"mid validate['required']")) . "\n";
+
+	echo \madeam\helper\Form::label('Senha',array("class"=>"block")) . "\n";
+	echo \madeam\helper\Form::password('Item[password]', null,array("class"=>"mid validate['required']")) . "\n";
+
+	echo '<div class="base">';
+	echo \madeam\helper\Form::submit('Login',array('class'=>'awesome')) . "\n";
+	echo '</div>';
+	echo \madeam\helper\Form::close();
+	?>
+	</div>
+	<?php echo $esqueceu; ?>
+</div>
+<div id="esqueceuFrm" class="authCenter">
+	<div class="form">
+	<?php
+	echo \madeam\helper\Form::open('auth/',array('id'=>'formRecupera','class'=>'frm')) . "\n";
+
+	foreach((array)$frmRecupera as $k=>$v)echo \madeam\helper\Form::hidden($k, $v) . "\n";
+
+	echo \madeam\helper\Form::label('Email',array("class"=>"block")) . "\n";
+	echo \madeam\helper\Form::text('Item[email]', null,array("id"=>"recuperaEmail","class"=>"mid validate['required','email']")) . "\n";
+
+	echo '<div class="base">';
+	echo \madeam\helper\Form::submit('Recuperar',array('class'=>'awesome')) . "\n";
+	echo \madeam\helper\Form::button('Voltar para o Login',array('id'=>'voltaLoginBtn','class'=>'awesome')) . "\n";
+	echo '</div>';
+	echo \madeam\helper\Form::close();
+	?>
+	</div>
+</div>

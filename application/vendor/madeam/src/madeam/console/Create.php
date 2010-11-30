@@ -1,0 +1,94 @@
+<?php
+namespace madeam\console;
+class Create extends \madeam\Console {
+
+	/**
+	* Creates a controller
+	*
+	* @param string $name
+	* @param string $extends
+	* @param string $views
+	* @param string $actions
+	*/
+	public function controller($name, $extends = 'madeam\Controller', $views = 'index', $actions = 'index') {
+
+		// set controller name and class name
+		$names = explode('/', $name);
+
+		$controllerName           = $names[count($names) - 1];
+		$controllerClassName      = ucfirst($controllerName) . 'Controller';
+		$controllerNamespace      = implode('\\', $names);
+		$controllerViewFilePath   = getcwd() . '/application/views/' . strtolower(implode(DIRECTORY_SEPARATOR, $names)) . '/';
+		
+		print_r(getcwd());
+		echo "\n";
+		//print_r($controllerName,$controllerClassName,$controllerNamespace,$controllerViewFilePath);
+		
+		array_pop($names);
+		if (count($names) == 0) {
+			$controllerClassFilePath  = getcwd() . '/application/controllers/';
+		} else {
+			$controllerClassFilePath  = getcwd() . '/application/controllers/' . implode(DIRECTORY_SEPARATOR, $names) . '/';
+		}
+
+		// Create Class directory
+		`mkdir -p $controllerClassFilePath`;
+
+		// Create View directory
+		`mkdir -p $controllerViewFilePath`;
+
+		// define controller class in controller file contents
+		$controllerContents = "<?php\nclass $controllerClassName extends " . $extends . " {\n";
+
+		// create action
+		$actions = preg_split('/[\s\,]/', $actions);
+		foreach ($actions as $action) {
+			$action = trim($action);
+			// add action method to class
+			$controllerContents .= "\n\tpublic function $action" . "Action(\$request) {\n\t\t//...Code\n\t}\n";
+		}
+
+		// create views
+		$views = preg_split('/[\s\,]/', $views);
+		foreach ($actions as $view) {
+			$view = trim($view);
+			// create view file
+			$viewFile = $controllerViewFilePath . strtolower($view) . '.html';
+			`touch $viewFile`;
+			file_put_contents($viewFile, "$view view");
+		}
+
+		// close class definition
+		$controllerContents .= "\n}";    
+
+		// save file contents to file
+		$controllerFile = $controllerClassFilePath . $controllerName .  'Controller.php';
+		`touch $controllerFile`;
+		file_put_contents($controllerFile, $controllerContents);
+	}
+
+	/**
+	* Creates a view
+	*
+	* @param array $name
+	* @param array $format
+	*/
+	public function view($name, $format = 'html') {
+		// set file contents
+		$viewContents = $name . ' view';
+
+		$nodes = explode('/', $name);
+
+		$viewFileName = strtolower(array_pop($nodes)) . '.' . $format;
+
+		// create view directory
+		$viewPath = getcwd() . '/application/views/' . implode('/', $nodes) . '/';
+		`mkdir -p $viewPath`;
+
+		$viewFile = $viewPath . $viewFileName;
+		`touch $viewFile`;
+
+		file_put_contents($viewFile, $viewContents);
+	}
+
+}

@@ -1,0 +1,60 @@
+<section class="content">
+	<header>
+		<h1><?php echo $acao; ?></h1>
+	</header>
+	<hr/>
+	<?php if($erros): ?>
+	<pre class="erro">
+	<?php
+	foreach($erros as $msg)echo "{$msg}"."\n";
+	?>
+	</pre>
+	<?php endif; ?>
+	<div class="formulario">
+		<?php
+		echo \madeam\helper\Form::open($_uri,array('id'=>'frmAdmin','class'=>'frm')) . "\n";
+		echo \madeam\helper\Form::hidden('Item[id]', $item->id) . "\n";
+		// Path to redirect if upload files errors
+		echo \madeam\helper\Form::hidden('_pathUrl', $url) . "\n";
+	
+		foreach((array)$frm as $k=>$v)echo \madeam\helper\Form::hidden($k, $v) . "\n";
+	
+		echo '<p>';
+		echo \madeam\helper\Form::labelOpen('<span class="big">Seção</span>');
+		echo \madeam\helper\Form::text('Item[secao]',$item->secao,array("id"=>"_slugTitle","autofocus"=>true,"required"=>true,"placeholder"=>"Nome da seção","class"=>"mid validate['required']"));
+		echo \madeam\helper\Form::labelClose();
+		echo '</p>'. "\n";
+	
+		echo '<p>';
+		echo \madeam\helper\Form::labelOpen('<span class="big">Slug</span>');
+		echo \madeam\helper\Form::text('Item[slug]',$item->slug,array("id"=>"_slugAlias","required"=>true,"class"=>"mid validate['required']"));
+		echo \madeam\helper\Form::labelClose();
+		echo '</p>'. "\n";
+	
+		echo '<p>';
+		echo \madeam\helper\Form::labelOpen('<span class="big">Tags</span>');
+		echo \madeam\helper\Form::text('Item[tag]',$item->tag,array("class"=>"mid"));
+		echo \madeam\helper\Form::labelClose();
+		echo '</p>'. "\n";
+	
+		echo '<p>';
+		echo \madeam\helper\Form::labelOpen('<span class="big">Ativo</span>');
+		echo \madeam\helper\Form::radio('Item[ativo]',1,$item->ativo,array("id"=>"ativo1","class"=>"validate['required']"));
+		echo \madeam\helper\Form::label('Sim',array("for"=>"ativo1"));
+		echo \madeam\helper\Form::radio('Item[ativo]',0,$item->ativo,array("id"=>"ativo0","class"=>"validate['required']"));
+		echo \madeam\helper\Form::label('Não',array("for"=>"ativo0"));
+		echo \madeam\helper\Form::labelClose();
+		echo '</p>'. "\n";
+	
+		echo '<p class="_paddingBoth">';
+		echo \madeam\helper\Form::textarea('Item[descricao]',($item->descricao)?$item->descricao:' ',array("required"=>true,"class"=>"big ckEditor __MooEditable"));
+		echo '</p>'. "\n";
+	
+		echo '<hr/>';
+	
+		echo \madeam\helper\Form::submit('Salva',array("class"=>"awesome")) . "\n";
+		echo \madeam\helper\Form::button('Voltar',array("id"=>"voltaBtn",'class'=>'awesome')) . "\n";
+		echo \madeam\helper\Form::close();
+		?>
+	</div>
+</section>
